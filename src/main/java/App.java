@@ -14,6 +14,7 @@ public class App {
         System.out.println("수업 교시: ");
 
         System.out.println("1번 과목이 등록되었습니다.");
+        System.out.println("2번 과목이 등록되었습니다.");
         System.out.println("프로그램을 종료합니다.");
     }
 }
