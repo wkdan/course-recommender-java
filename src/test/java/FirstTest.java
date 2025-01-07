@@ -49,4 +49,19 @@ public class FirstTest {
 
         assertThat(count).isEqualTo(4);
     }
+
+    @Test
+    @DisplayName("과목 정보를 입력하면 과목 번호 출력")
+    void t4() {
+
+        String out = TestBot.run("""
+                등록
+                객체지향프로그래밍
+                T043385
+                없음
+                수 1 2 금 3
+                """);
+
+        assertThat(out).contains("1번 과목이 등록되었습니다.");
+    }
 }
