@@ -55,6 +55,11 @@ public class App {
                 courseRecommederList.reversed().forEach(c -> {
                     System.out.printf("%d / %s / %s / %d / %d / %s / %s \n", c.getId(), c.getCourseName(), c.getCourseCode(), c.getCourseCredit(), c.getCourseGrade(), c.getPreCourseName(), c.getCourseTime());
                 });
+            } else if (cmd.equals("수강신청")) {
+                System.out.println("--- 수강신청 추천 목록 ---");
+                System.out.println("번호 / 과목 / 과목코드 / 학점 / 학년 / 선수과목 / 수업 교시");
+                System.out.println("----------------------------------------------");
+                System.out.println("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7\n1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
             }
         }
     }
