@@ -94,7 +94,7 @@ public class FirstTest {
     }
 
     @Test
-    @DisplayName("과목 2개 입력, 과목 번호 증가")
+    @DisplayName("목록 입력 시 저장된 목록 출력")
     void t6() {
 
         String out = TestBot.run("""
@@ -116,6 +116,33 @@ public class FirstTest {
                 """);
 
         assertThat(out)
+                .contains("번호 / 과목 / 과목코드 / 학점 / 학년 / 선수과목 / 수업 교시")
+                .contains("----------------------------------------------")
+                .containsSubsequence("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7", "1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
+    }
+
+    @Test
+    @DisplayName("수강신청 입력 시 수강신청 추천 목록을 출력")
+    void t7() {
+        String out = TestBot.run("""
+                등록
+                객체지향프로그래밍
+                T043585
+                3
+                2
+                없음
+                수 1 2 금 3
+                등록
+                선형대수
+                T031086
+                3
+                1
+                없음
+                화 5 6 목 7
+                수강신청
+                """);
+        assertThat(out)
+                .contains("--- 수강신청 추천 목록 ---")
                 .contains("번호 / 과목 / 과목코드 / 학점 / 학년 / 선수과목 / 수업 교시")
                 .contains("----------------------------------------------")
                 .containsSubsequence("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7", "1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
