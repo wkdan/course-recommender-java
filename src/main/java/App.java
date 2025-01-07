@@ -24,18 +24,19 @@ public class App {
                 break;
 
             } else if (cmd.equals("등록")) {
+
                 System.out.println("과목 명: ");
                 String courseName = sc.nextLine();
+
                 System.out.println("과목 코드: ");
                 String courseCode = sc.nextLine();
+
                 System.out.println("학점: ");
-                int courseCredit = sc.nextInt();
-                // 버퍼에 남은 \n 제거용
-                sc.nextLine();
+                int courseCredit = Integer.parseInt(sc.nextLine());
+
                 System.out.println("학년: ");
-                int courseGrade = sc.nextInt();
-                // 버퍼에 남은 \n 제거용
-                sc.nextLine();
+                int courseGrade = Integer.parseInt(sc.nextLine());
+
                 System.out.println("선수 과목: ");
                 String preCourseName = sc.nextLine();
                 System.out.println("수업 교시: ");
