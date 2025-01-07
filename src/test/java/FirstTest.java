@@ -47,7 +47,7 @@ public class FirstTest {
                 """);
         long count = out.split("명령 \\)").length - 1;
 
-        assertThat(count).isEqualTo(4);
+        assertThat(count).isEqualTo(5);
     }
 
     @Test
