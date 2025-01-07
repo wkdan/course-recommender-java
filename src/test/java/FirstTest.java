@@ -84,4 +84,28 @@ public class FirstTest {
 
         assertThat(out).containsSubsequence("1번 과목이 등록되었습니다.", "2번 과목이 등록되었습니다.");
     }
+
+    @Test
+    @DisplayName("과목 2개 입력, 과목 번호 증가")
+    void t6() {
+
+        String out = TestBot.run("""
+                등록
+                객체지향프로그래밍
+                T043385
+                없음
+                수 1 2 금 3
+                등록
+                선형대수
+                T031086
+                없음
+                화 5 6 목 7
+                목록
+                """);
+
+        assertThat(out)
+                .contains("과목 / 과목코드 / 학점 / 학년 / 선수과목 / 수업 교시")
+                .contains("----------------------------------------------")
+                .containsSubsequence("선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7", "객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
+    }
 }
