@@ -20,8 +20,8 @@ public class FirstTest {
         App app = new App();
         app.run();
 
-        assertThat(out.toString()).contains("--- 수강신청 추천 시스템 ---");
-        assertThat(out.toString()).contains("프로그램을 종료합니다.");
+        assertThat(out.toString())
+                .containsSubsequence("--- 수강신청 추천 시스템 ---", "프로그램을 종료합니다.");
 
     }
 }
