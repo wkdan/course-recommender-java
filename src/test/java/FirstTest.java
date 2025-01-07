@@ -33,4 +33,20 @@ public class FirstTest {
         assertThat(out)
                 .containsSubsequence("과목 명: ", "과목 코드: ","학점: ","학년: ","선수 과목: ", "수업 교시: ");
     }
+
+    @Test
+    @DisplayName("명령을 여러번 입력할 수 있다.")
+    void t3() {
+
+        String out = TestBot.run("""
+                등록
+                등록
+                등록
+                등록
+                종료
+                """);
+        long count = out.split("명령 \\)").length - 1;
+
+        assertThat(count).isEqualTo(4);
+    }
 }
