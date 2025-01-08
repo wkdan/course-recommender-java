@@ -30,6 +30,8 @@ public class App {
 
             } else if (cmd.equals("수강신청")) {
                 courseRecommenderController.recommend();
+            } else {
+                System.out.println("잘못된 명령입니다.");
             }
         }
     }
