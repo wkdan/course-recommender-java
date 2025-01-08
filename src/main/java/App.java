@@ -30,6 +30,8 @@ public class App {
 
             } else if (cmd.equals("수강신청")) {
                 courseRecommenderController.recommend();
+            } else if (cmd.equals("삭제?id=1")){
+                System.out.println("1번 과목이 삭제되었습니다.");
             } else {
                 courseRecommenderController.wrongCmd();
             }
