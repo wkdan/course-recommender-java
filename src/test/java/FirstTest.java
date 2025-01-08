@@ -142,4 +142,16 @@ public class FirstTest {
                 .contains("----------------------------------------------")
                 .containsSubsequence("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7", "1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
     }
+
+    @Test
+    @DisplayName("잘못된 명령 입력 시 예외처리")
+    void t8() {
+        String out = TestBot.run("""
+                명렁
+                audfud
+                """);
+
+        assertThat(out)
+                .containsSubsequence("잘못된 명령입니다.", "잘못 된 명령입니다.");
+    }
 }
