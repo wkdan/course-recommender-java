@@ -153,4 +153,15 @@ public class FirstTest {
         assertThat(out)
                 .containsSubsequence("잘못된 명령입니다.");
     }
+
+    @Test
+    @DisplayName("과목 삭제 ex)삭제?id=1 이면 1번 과목 삭제")
+    void t9() {
+        String out = TestBot.run("""
+                삭제?id=1
+                """);
+
+        assertThat(out)
+                .contains("1번 과목이 삭제되었습니다.");
+    }
 }
