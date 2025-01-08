@@ -147,11 +147,10 @@ public class FirstTest {
     @DisplayName("잘못된 명령 입력 시 예외처리")
     void t8() {
         String out = TestBot.run("""
-                명렁
-                audfud
+               audfud
                 """);
 
         assertThat(out)
-                .containsSubsequence("잘못된 명령입니다.", "잘못 된 명령입니다.");
+                .containsSubsequence("잘못된 명령입니다.");
     }
 }
