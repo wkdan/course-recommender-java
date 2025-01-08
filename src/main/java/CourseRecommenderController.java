@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 public class CourseRecommenderController {
     private final Scanner sc;
-    private int lastId;
-    private final List<CourseRecommender> courseRecommederList;
+    private CourseRecommenderService courseRecommenderService;
 
     public CourseRecommenderController(Scanner sc) {
         this.sc = sc;
-        this.lastId = 0;
-        courseRecommederList = new ArrayList<>();
+        courseRecommenderService = new CourseRecommenderService();
     }
 
     public void register() {
@@ -31,17 +29,15 @@ public class CourseRecommenderController {
         System.out.println("수업 교시: ");
         String courseTime = sc.nextLine();
 
-        int id = ++lastId;
-        CourseRecommender cr = new CourseRecommender(id,courseName,courseCode,courseCredit,courseGrade,preCourseName,courseTime);
-        courseRecommederList.add(cr);
-
-        System.out.println("%d번 과목이 등록되었습니다.".formatted(id));
+        CourseRecommender courseRecommender = courseRecommenderService.write(courseName, courseCode, courseCredit, courseGrade, preCourseName, courseTime);
+        System.out.println("%d번 과목이 등록되었습니다.".formatted(courseRecommender.getId()));
     }
     public void list() {
         System.out.println(" 번호 / 과목 / 과목코드 / 학점 / 학년 / 선수과목 / 수업 교시");
         System.out.println("----------------------------------------------");
 
-        courseRecommederList.reversed().forEach(c -> {
+        List<CourseRecommender> courseRecommenderList = courseRecommenderService.getAllItems();
+        courseRecommenderList.reversed().forEach(c -> {
             System.out.printf("%d / %s / %s / %d / %d / %s / %s \n", c.getId(), c.getCourseName(), c.getCourseCode(), c.getCourseCredit(), c.getCourseGrade(), c.getPreCourseName(), c.getCourseTime());
         });
     }
@@ -55,5 +51,11 @@ public class CourseRecommenderController {
 
     public void wrongCmd() {
         System.out.println("잘못된 명령입니다.");
+    }
+
+
+    public void delete() {
+        CourseRecommender courseRecommender = CourseRecommenderService.deleteItem();
+        System.out.println("1번 과목이 삭제되었습니다.");
     }
 }
