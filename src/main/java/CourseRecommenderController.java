@@ -52,4 +52,8 @@ public class CourseRecommenderController {
         System.out.println("----------------------------------------------");
         System.out.println("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7\n1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
     }
+
+    public void wrongCmd() {
+        System.out.println("잘못된 명령입니다.");
+    }
 }
