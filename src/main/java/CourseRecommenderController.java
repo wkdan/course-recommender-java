@@ -55,7 +55,6 @@ public class CourseRecommenderController {
 
 
     public void delete() {
-        CourseRecommender courseRecommender = CourseRecommenderService.deleteItem();
         System.out.println("1번 과목이 삭제되었습니다.");
     }
 }

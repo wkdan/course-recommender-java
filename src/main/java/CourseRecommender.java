@@ -7,8 +7,7 @@ public class CourseRecommender {
     private String preCourseName;
     private String courseTime;
 
-    public CourseRecommender(int id, String courseName, String courseCode, int courseCredit, int courseGrade, String preCourseName, String courseTime) {
-        this.id = id;
+    public CourseRecommender(String courseName, String courseCode, int courseCredit, int courseGrade, String preCourseName, String courseTime) {
         this.courseName = courseName;
         this.courseCode = courseCode;
         this.courseCredit = courseCredit;

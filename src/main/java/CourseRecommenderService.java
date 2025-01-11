@@ -2,27 +2,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CourseRecommenderService {
-    private int lastId;
-    private final List<CourseRecommender> courseRecommederList;
+
+    private final CourseRecommenderRepository courseRecommenderRepository;
 
     public CourseRecommenderService() {
-        courseRecommederList = new ArrayList<>();
-    }
 
-    public CourseRecommender deleteItem() {
-        return courseRecommederList.remove(1);
+        courseRecommenderRepository = new CourseRecommenderRepository();
 
     }
+
+//    public CourseRecommender deleteItem() {
+//        return courseRecommederList.remove(1);
+//
+//    }
 
     public CourseRecommender write(String courseName, String courseCode, int courseCredit, int courseGrade, String preCourseName, String courseTime) {
-        int id = ++lastId;
-        CourseRecommender cr = new CourseRecommender(id,courseName,courseCode,courseCredit,courseGrade,preCourseName,courseTime);
-        courseRecommederList.add(cr);
-
-        return cr;
+        CourseRecommender courseRecommender = new CourseRecommender(courseName, courseCode, courseCredit, courseGrade, preCourseName, courseTime);
+        return courseRecommenderRepository.save(courseRecommender);
     }
 
     public List<CourseRecommender> getAllItems() {
-        return courseRecommederList;
+        return courseRecommenderRepository.findAll();
     }
 }
