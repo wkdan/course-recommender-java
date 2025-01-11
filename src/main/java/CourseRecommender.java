@@ -75,4 +75,5 @@ public class CourseRecommender {
     public boolean isNew() {
         return this.id == 0;
     }
+
 }
