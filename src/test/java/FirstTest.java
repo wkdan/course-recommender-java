@@ -180,4 +180,40 @@ public class FirstTest {
                 .contains("2 / 선형대수 / T031086 / 3 / 1 / 없음 / 화 5 6 목 7")
                 .doesNotContain("1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
     }
+
+    @Test
+    @DisplayName("과목 수정 ex 수정?id=1")
+    void t10() {
+        String out = TestBot.run("""
+                등록
+                객체지향프로그래밍
+                T043585
+                3
+                2
+                없음
+                수 1 2 금 3
+                등록
+                선형대수
+                T031086
+                3
+                1
+                없음
+                화 5 6 목 7
+                수정?id=1
+                새 과목
+                새 코드
+                3
+                3
+                없음
+                화 5 6 목 8
+                목록
+                """);
+
+        assertThat(out)
+                .contains("1 / 새 과목 / 새 코드 / 3 / 3 / 없음 / 화 5 6 목 8")
+                .doesNotContain("1 / 객체지향프로그래밍 / T043585 / 3 / 2 / 없음 / 수 1 2 금 3");
+    }
+
+
 }
+
