@@ -29,6 +29,7 @@ public class App {
                 case "목록" -> courseRecommenderController.list();
                 case "수강신청" -> courseRecommenderController.recommend();
                 case "삭제" -> courseRecommenderController.delete(cmd);
+                case "수정" -> courseRecommenderController.modify(cmd);
                 default -> courseRecommenderController.wrongCmd();
             }
 

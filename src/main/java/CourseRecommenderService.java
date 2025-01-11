@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CourseRecommenderService {
 
@@ -22,5 +23,19 @@ public class CourseRecommenderService {
 
     public boolean delete(int id) {
         return courseRecommenderRepository.deleteById(id);
+    }
+
+    public Optional<CourseRecommender> getItems(int id) {
+        return courseRecommenderRepository.findById(id);
+    }
+
+    public void modify(CourseRecommender c, String newCourseName, String newCourseCode, int newCourseCredit, int newCourseGrade, String newPreCourseName, String newCourseTime) {
+        c.setCourseName(newCourseName);
+        c.setCourseCode(newCourseCode);
+        c.setCourseCredit(newCourseCredit);
+        c.setCourseGrade(newCourseGrade);
+        c.setPreCourseName(newPreCourseName);
+        c.setCourseTime(newCourseTime);
+        courseRecommenderRepository.save(c);
     }
 }

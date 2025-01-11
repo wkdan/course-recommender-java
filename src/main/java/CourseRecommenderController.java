@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class CourseRecommenderController {
@@ -65,5 +66,41 @@ public class CourseRecommenderController {
         if (!result) {
             wrongCmd();
         }
+    }
+
+    public void modify(String cmd) {
+        String param = cmd.split("\\?")[1];
+        String[] paramBits = param.split("=");
+        String strId = paramBits[1];
+        int id = Integer.parseInt(strId);
+
+        Optional<CourseRecommender> opCourseRecommender = courseRecommenderService.getItems(id);
+        CourseRecommender c = opCourseRecommender.orElse(null);
+
+        if (c == null) {
+            System.out.println("%d번 과목은 존재하지 않습니다.".formatted(id));
+            return;
+        }
+        System.out.printf("(기존) %s / %s / %d / %d / %s / %s \n", c.getCourseName(), c.getCourseCode(), c.getCourseCredit(), c.getCourseGrade(), c.getPreCourseName(), c.getCourseTime());
+
+        System.out.println("과목 명: ");
+        String newCourseName = sc.nextLine();
+
+        System.out.println("과목 코드: ");
+        String newCourseCode = sc.nextLine();
+
+        System.out.println("학점: ");
+        int newCourseCredit = Integer.parseInt(sc.nextLine());
+
+        System.out.println("학년: ");
+        int newCourseGrade = Integer.parseInt(sc.nextLine());
+
+        System.out.println("선수 과목: ");
+        String newPreCourseName = sc.nextLine();
+
+        System.out.println("수업 교시: ");
+        String newCourseTime = sc.nextLine();
+
+        courseRecommenderService.modify(c, newCourseName, newCourseCode, newCourseCredit, newCourseGrade, newPreCourseName, newCourseTime);
     }
 }
