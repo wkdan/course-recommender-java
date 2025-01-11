@@ -54,7 +54,16 @@ public class CourseRecommenderController {
     }
 
 
-    public void delete() {
-        System.out.println("1번 과목이 삭제되었습니다.");
+    public void delete(String cmd) {
+        String param = cmd.split("\\?")[1];
+        String[] paramBits = param.split("=");
+        String strId = paramBits[1];
+        int id = Integer.parseInt(strId);
+
+        boolean result = courseRecommenderService.delete(id);
+
+        if (!result) {
+            wrongCmd();
+        }
     }
 }

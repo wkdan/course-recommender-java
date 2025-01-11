@@ -21,4 +21,8 @@ public class CourseRecommenderRepository {
     public List<CourseRecommender> findAll() {
         return courseRecommenderList;
     }
+
+    public boolean deleteById(int id) {
+        return courseRecommenderList.removeIf(courseRecommender -> courseRecommender.getId() == id);
+    }
 }

@@ -19,13 +19,16 @@ public class App {
             System.out.println("명령 ) ");
             String cmd = sc.nextLine();
 
+            String[] cmdBits = cmd.split("\\?");
+            String actionName = cmdBits[0];
 
-            switch(cmd) {
+
+            switch(actionName) {
                 case "종료" -> systemController.exit();
                 case "등록" -> courseRecommenderController.register();
                 case "목록" -> courseRecommenderController.list();
                 case "수강신청" -> courseRecommenderController.recommend();
-                case "삭제?id=1" -> courseRecommenderController.delete();
+                case "삭제" -> courseRecommenderController.delete(cmd);
                 default -> courseRecommenderController.wrongCmd();
             }
 

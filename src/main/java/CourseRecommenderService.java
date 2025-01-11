@@ -11,11 +11,6 @@ public class CourseRecommenderService {
 
     }
 
-//    public CourseRecommender deleteItem() {
-//        return courseRecommederList.remove(1);
-//
-//    }
-
     public CourseRecommender write(String courseName, String courseCode, int courseCredit, int courseGrade, String preCourseName, String courseTime) {
         CourseRecommender courseRecommender = new CourseRecommender(courseName, courseCode, courseCredit, courseGrade, preCourseName, courseTime);
         return courseRecommenderRepository.save(courseRecommender);
@@ -23,5 +18,9 @@ public class CourseRecommenderService {
 
     public List<CourseRecommender> getAllItems() {
         return courseRecommenderRepository.findAll();
+    }
+
+    public boolean delete(int id) {
+        return courseRecommenderRepository.deleteById(id);
     }
 }
